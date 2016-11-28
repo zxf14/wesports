@@ -38,7 +38,7 @@
                     <a href="<?php echo base_url('user/login')?>">登录</a>
                 </li>
                 <li>
-                    <a href="dist/accounCenter.html">修改个人信息</a>
+                    <a href="<?php echo base_url('user/edit')?>">修改个人信息</a>
                 </li>
                 <!--<li>
                     <a href="#">Phasellus consequat</a>

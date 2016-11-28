@@ -26,10 +26,11 @@ class Friends extends CI_Controller{
             redirect(base_url('user/login'));
         }
         $data['following']=$this->friends_m->get_following($u_id);
-        print_r($data['following']);
+//        print_r($data['following']);
         $data['head']='我的关注 - wesports';
         $data['title']=array("Friends","关注更多的好友吧");
         $data['page']='moment';
+        $data['info']='我关注的人';
         $this->load->view('following',$data);
     }
     public function followers(){
@@ -42,6 +43,7 @@ class Friends extends CI_Controller{
         $data['head']='我的关注 - wesports';
         $data['title']=array("Friends","关注更多的好友吧");
         $data['page']='moment';
+        $data['info']='关注我的人';
         $this->load->view('following',$data);
     }
     public function follow(){

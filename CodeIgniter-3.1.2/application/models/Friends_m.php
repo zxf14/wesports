@@ -35,6 +35,10 @@ class Friends_m extends CI_Model{
         $this->db->where('followUserId', $fid);
         return $this->db->delete('friendship');
     }
+    public function is_follow($uid,$fid){
+        $query = $this->db->query('SELECT * from friendship WHERE userId='.$uid.' and followUserId='.$fid);
+        return $query->row_array()!==null;
+    }
     public function get_followers($uid){
 
     }

@@ -107,7 +107,7 @@
 
                             <strong><i class="fa fa-file-text-o margin-r-5"></i> 简介</strong>
 
-                            <p class="text-left">先定一个小目标：跑一次全马～</p>
+                            <p class="text-left">先定一个小目标：跑一次全马 ～</p>
                         </div>
                         <!-- /.box-body -->
                     </div>
@@ -122,7 +122,7 @@
                             <div class="profile_pinfo" id="pl_content_account">
 
                                 <div class="infoblock">
-                                    <h2 class="major text-left"><span>我关注的人</span>
+                                    <h2 class="major text-left"><span><?php echo $info?></span>
                                     </h2>
                                 </div>
 
@@ -160,7 +160,7 @@
                     success: function (data,status) {
                         if(data==='1'){
                             fbutton.className='btn-warning pull-right';
-                            fbutton.childNodes[0].nodeValue==='关注Ta';
+                            fbutton.childNodes[0].nodeValue='关注Ta';
                             $("#join").blur();
                             alert("您已经取消对Ta的关注");
                         }
@@ -178,7 +178,7 @@
                     success: function (data,status) {
                         if(data==='1'){
                             fbutton.className='btn-primary pull-right';
-                            fbutton.childNodes[0].nodeValue==='取消关注';
+                            fbutton.childNodes[0].nodeValue='取消关注';
                             $("#join").blur();
                             alert("成功关注!");
                         }
