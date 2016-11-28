@@ -31,6 +31,7 @@ class Friends extends CI_Controller{
         $data['title']=array("Friends","关注更多的好友吧");
         $data['page']='moment';
         $data['info']='我关注的人';
+        
         $this->load->view('following',$data);
     }
     public function followers(){
