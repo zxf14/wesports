@@ -57,7 +57,7 @@
 
                             <div class="tab-pane" id="settings">
 
-                                <form class="form-horizontal" action="<?php echo $url;?>" method="post" onsubmit="return check(this)">
+                                <form class="form-horizontal" action="<?php if(isset($act)) echo $url.'/'.$act['activityId'];?>" method="post" onsubmit="return check(this)">
                                     <input  type="hidden" value="<?php if(isset($act)) echo $act['activityId'];?>" name="actId"/>
                                     <div class="form-group">
                                         <label for="inputTitle" class="col-sm-2 control-label">活动标题</label>
@@ -173,13 +173,11 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-offset-2 col-sm-10">
-                                            <button type="submit" class="btn btn-danger">修改活动信息</button>
+                                            <button type="submit" class="btn btn-danger"><?php echo $title[1];?></button>
+                                            <button class="btn btn-warning" id="cancel">取消</button>
                                         </div>
                                     </div>
                                 </form>
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <button class="btn btn-warning">退出</button>
-                                </div>
                             </div>
 
                         </div>
@@ -211,7 +209,9 @@
             start.value=timeS;
             start.min=moment().format();
         });
-
+        $('#cancel').click(function(){
+            history.go(-1);
+        });
         var photo = document.getElementById("inputActImg");
         photo.addEventListener("click", changeImg);
         var cImg=(function () {

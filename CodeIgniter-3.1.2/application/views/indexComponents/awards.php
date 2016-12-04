@@ -12,16 +12,16 @@
         <section class="box highlight">
             <ul class="special">
                 <li title="快走侠">
-                    <img class="img-circle" src="dist/images/prize1.png" />
+                    <img class="img-circle" src="<?php echo base_url('asset/images/prize1.png');?>" />
                 </li>
                 <li title="马拉松">
-                    <img class="img-circle" src="dist/images/prize2.jpg"/>
+                    <img class="img-circle" src="<?php echo base_url('asset/images/prize2.jpg');?>"/>
                 </li>
                 <li title="蜗牛侠">
-                    <img class="img-circle" src="dist/images/prize3.jpg"/>
+                    <img class="img-circle" src="<?php echo base_url('asset/images/prize3.jpg');?>"/>
                 </li>
                 <li title="开始运动">
-                    <img class="img-circle" src="dist/images/prize4.jpg"/>
+                    <img class="img-circle" src="<?php echo base_url('asset/images/prize4.jpg');?>"/>
                 </li>
             </ul>
             <header>

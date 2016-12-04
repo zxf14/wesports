@@ -27,7 +27,7 @@
     <div class="login-box">
 
         <div class="panel-head">
-            <p class="login-box-msg">注册</p>
+            <p class="login-box-msg">登录</p>
         </div>
         <?php echo form_open('user/login');?>
         <form action="index.html" method="post">
@@ -40,16 +40,11 @@
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
             <div class="row">
-                <div class="col-xs-8">
-                    <div class="checkbox icheck">
-                        <label>
-                            <input type="checkbox" value="remember"> 记住密码
-                        </label>
-                    </div>
-                </div>
                 <!-- /.col -->
-                <div class="col-xs-4">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat">登录</button>
+
+                <div class="loginB center-block">
+                    <button type="submit" class="btn btn-basic btn-block btn-flat">登录</button>
+                    <span>还没有账号？<a href="<?php echo base_url('user/register')?>">立即注册</a></span> <!-- id='register' class="btn btn-primary btn-block btn-flat">注册账号</button> -->
                 </div>
             </div>
         </form>
@@ -59,7 +54,12 @@
 <script src="<?php echo base_url('asset/assets/js/jquery.transit.min.js');?>" type="text/javascript" charset="utf-8"></script>
 <script src="<?php echo base_url('asset/javascript/bg.js');?>" type="text/javascript" charset="utf-8"></script>
 <script src="<?php echo base_url('asset/javascript/bootstrap.min.js');?>" type="text/javascript" charset="utf-8"></script>
-
+<script>
+    $('#register').click(function(){
+        alert("sdafd");
+        location.href="<?php echo base_url('user/register')?>";
+    })
+</script>
 </body>
 
 </html>

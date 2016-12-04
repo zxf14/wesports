@@ -40,7 +40,8 @@ class Friends_m extends CI_Model{
         return $query->row_array()!==null;
     }
     public function get_followers($uid){
-
+ $query_all = $this->db->query('SELECT friendship.userId as followUserId,userName,age,gender,location,email,profile,photoUri,level FROM friendship,`user` WHERE friendship.followUserId='.$uid.' and friendship.userId=`user`.userId');
+        return $query_all->result_array();
     }
     public function get_followers_num($uid){
         $query_all = $this->db->query('SELECT COUNT(*) as num FROM friendship WHERE followUserId='.$uid);

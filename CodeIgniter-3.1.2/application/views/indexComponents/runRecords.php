@@ -15,7 +15,9 @@
 
                     <!-- Featured Post -->
                     <article class="box">
-                        <div id="barcharts" style="width: 600px;height:400px;"></div>
+                        <div id="barcharts" style="min-width:700px;height:400px">
+                            
+                        </div>
                     </article>
 
                 </div>
@@ -29,26 +31,26 @@
                             <article class="box post-summary">
                                 <h3><li class="icon fa-clock-o">时长</li></h3>
 
-                        <li class="icon fa-clock-o">6 小时</li>
+                        <li class="icon fa-clock-o"><?php echo $time?>小时</li>
 
                         </article>
                         </li>
                         <li>
                             <article class="box post-summary">
                                 <h3><li class="icon fa-fire">卡路里</li></h3>
-                        <li class="icon fa-fire">9000 大卡</li>
+                        <li class="icon fa-fire"><?php echo $calories?> 大卡</li>
                         </article>
                         </li>
                         <li>
                             <article class="box post-summary">
                                 <h3><li class="icon fa-clock-o">平均配速</li></h3>
-                        <li class="icon fa-comments">6'12"／公里</li>
+                        <li class="icon"><?php echo $minute?>／公里</li>
                         </article>
                         </li>
                         <li>
                             <article class="box post-summary">
                                 <h3><li class="icon fa-clock-o">平均速度</li></h3>
-                        <li class="">9.64 公里/时</li>
+                        <li class="icon"><?php echo $speed?> 公里/时</li>
 
                         </article>
                         </li>

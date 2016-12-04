@@ -37,7 +37,26 @@ LIMIT 10');
         }
         $act_list=$query->result_array();
         return $act_list;
-
+    }
+    public function get_mine_join($uid,$page_num=1,$page_size=2){
+            $query = $this->db->query('SELECT "activity".activityId,title, isOnline, isOffLine, startTime, sportType,amount,photoUri
+FROM activity,activity_joiner LEFT OUTER JOIN (SELECT activityId,count(*) as amount from activity_joiner GROUP BY activityId) AS act_count
+ON activity.activityId=act_count.activityId
+WHERE activity_joiner.activityId=activity.activityId and activity_joiner.participatorId='.$uid.'
+ ORDER BY startTime,amount DESC 
+ LIMIT 10');
+        $act_list=$query->result_array();
+        return $act_list;
+    }
+    public function get_mine_create($uid,$page_num=1,$page_size=2){
+        $query = $this->db->query('SELECT "activity".activityId,title, isOnline, isOffLine, startTime, sportType,amount,photoUri
+FROM activity LEFT OUTER JOIN (SELECT activityId,count(*) as amount from activity_joiner GROUP BY activityId) AS act_count
+ON activity.activityId=act_count.activityId
+WHERE activity.creatorId='.$uid.'
+ORDER BY startTime,amount DESC 
+LIMIT 10');
+        $act_list=$query->result_array();
+        return $act_list;
     }
     public function get_amount(){
         $query_all = $this->db->query('SELECT COUNT(*) as num FROM activity WHERE startTime>'.now());
@@ -69,8 +88,7 @@ LIMIT 10');
         return $this->db->delete('activity');
     }
     public function update($data){
-        $this->db->set('title',$data['title']);
-        $this->db->where('activityId',$data['act_id']);
-        $this->db->update('activity');
+        $this->db->where('activityId',$data['activityId']);
+        $this->db->update('activity',$data);
     }
 }

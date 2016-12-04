@@ -14,7 +14,7 @@ class User extends CI_Controller{
         $this->load->library('form_validation');
     }
     public function index(){
-        $data['users']=$this->user_m->get_user('1048043763@qq.com');
+        // $data['users']=$this->user_m->get_user('1048043763@qq.com');
         if (empty($data['users'])){
             show_404();
         }
@@ -25,7 +25,6 @@ class User extends CI_Controller{
         $this->form_validation->set_rules('email', '邮箱', 'required|callback_email_check');
         $this->form_validation->set_rules('password', '密码', 'required');
         $this->form_validation->set_rules('confirmPassword', '确认密码', 'required');
-        $this->form_validation->set_rules('password', '用户名', 'required');
         if($_POST && $this->form_validation->run() === TRUE) {
             $password = $this->input->post('password',true);
             $data = array(
@@ -43,13 +42,18 @@ class User extends CI_Controller{
                 $newdata=array('email'=>$data['email'],'password'=>$password);
                 $this->user_m->login($newdata);
             }
-            $this->index();
+            redirect();
         }
         else{
             $this->load->view('register');
         }
     }
     public function login(){
+        $uid=$this->session->userdata('userId');
+        if($uid){
+            $this->logout();
+            redirect(base_url('user/login'));
+        }
         $this->load->helper('date');
         $this->load->helper('form');
         $this->form_validation->set_rules('email', '邮箱', 'required');
@@ -60,22 +64,68 @@ class User extends CI_Controller{
                 'email' => $this->input->post('email',TRUE)
             );
             if ($this->user_m->login($data)){
-                redirect('activity/add');
+                $uid=$this->session->userdata('userId');
+                if($uid==4){
+                    redirect('admin/index');
+                }
+                redirect(base_url('summary/index'));
             }
             else{
-                show_error('用户名或密码错误!');
+                echo '<script>alert("登录失败");</script>';
+                $this->load->view('login');
             }
         }
         else{
             $this->load->view('login');
         }
     }
+    public function logout ()
+    {
+        $this->session->sess_destroy();
+        
+        $this->load->helper('cookie');
+        delete_cookie('uid');
+        delete_cookie('email');
+        redirect('user/login');
+    }
+    public function edit(){
+        $uid=$this->session->userdata('userId');
+        if(!$uid){
+            redirect(base_url('user/login'));
+        }
+        $this->form_validation->set_rules('username', '用户名', 'required');
+        if($_POST && $this->form_validation->run() === TRUE) {
+            $data = array(
+                'userId' => $uid,
+                'userName' => $this->input->post('username',TRUE),
+                'age' => $this->input->post('age',TRUE),
+                'gender'=>$this->input->post('inputGender',TRUE),
+                'profile'=>$this->input->post('profile',TRUE),
+                'photoUri'=>$this->input->post('inputUserImg',TRUE),
+                'location'=>$this->input->post('province',TRUE).';'.$this->input->post('city',TRUE),
+            );
+            if($this->user_m->mod_user($data)){
+                redirect(base_url('user/edit'));
+            }
+            else
+                echo '<script>alert("用户名不能为空");</script>';
+
+        }
+        else{
+            $data['user']=$this->user_m->get_user($uid);
+            $data['url']=base_url('user/edit');
+            $data['head']='修改账号信息 - wesports';
+            $data['title']=array("Account","修改账号信息");
+            $data['page']='user';
+            $this->load->view('account_info',$data);
+        }
+    }
     public function get_user($email){
-        return $this->user_m->get_user($email);
+        return $this->user_m->get_user_email($email);
 
     }
     public function email_check($email){
-        if ($this->get_user($email)){
+        if ($this->user_m->get_user_email($email)){
             echo '<script>alert("email invalid");</script>';
             return false;
         }
@@ -88,7 +138,7 @@ class User extends CI_Controller{
         if ($email===''){
             echo '请填写邮箱';
         }
-        elseif ($this->get_user($email)){
+        elseif ($this->user_m->get_user_email($email)){
             echo '邮箱已注册,请重新填写';
         }
         else{

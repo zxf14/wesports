@@ -13,7 +13,7 @@
         <h2 class="major"><span>官方赛事</span></h2>
         <ul class="divided">
             <li>
-                <a href="activitiesCenter-hot.html">热门</a>
+                <a href="<?php echo base_url('activity/index/hot');?>">热门</a>
             </li>
             <li>
                 <a href="activitiesCenter-hot.html">线上赛事</a>
@@ -41,10 +41,13 @@
         <h2 class="major"><span>我的活动</span></h2>
         <ul class="divided">
             <li>
-                <a href="activitiesCenter-MyCreating.html">我创建的</a>
+                <a href="<?php echo base_url('activity/index/mycreate');?>">我创建的</a>
             </li>
             <li>
-                <a href="activitiesCenter-MyActivities.html">我参与的</a>
+                <a href="<?php echo base_url('activity/index/myjoin');?>">我参与的</a>
+            </li>
+            <li>
+                <a href="<?php echo base_url('activity/add');?>">创建活动</a>
             </li>
         </ul>
     </section>

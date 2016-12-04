@@ -15,18 +15,47 @@ class Activity extends CI_Controller{
         $this->load->library('form_validation');
     }
     public function index($type='hot',$page_num=0){
-
-        if ($type==='online'){
-            $this->load->view('act_online');
+        $page_size=6;
+        $u_id=$this->session->userdata('userId');
+        if(!$u_id){
+            redirect(base_url('user/login'));
         }
-        elseif ($type==='offline'){
-            $this->load->view('act_offline');
+        if ($type==='myjoin'){
+            $num=$this->activity_m->get_amount();
+            $data['page_num']=$page_num;
+            $data['page_amount']=ceil($num/$page_size);
+            $data['activities']=$this->activity_m->get_mine_join($u_id,$page_num,$page_size);
+            $data['head']='我的参与 - wesports';
+            $data['title']=array("ACTIVITIES","参与到更多的活动中去吧");
+            $data['page']='act';
+            $data['url']=base_url('activity/index/myjoin/');
+            // print_r($data);
+            $this->load->view('act_hot',$data);
+        }
+        elseif ($type==='mycreate'){
+            $num=$this->activity_m->get_amount();
+            $data['page_num']=$page_num;
+            $data['page_amount']=ceil($num/$page_size);
+            $data['activities']=$this->activity_m->get_mine_create($u_id,$page_num,$page_size);
+            $data['head']='我创建的 - wesports';
+            $data['title']=array("ACTIVITIES","参与到更多的活动中去吧");
+            $data['page']='act';
+            $data['url']=base_url('activity/index/mycreate/');
+            // print_r($data);
+            $this->load->view('act_hot',$data);
         }
         elseif ($type==='ride'){
+            $num=$this->activity_m->get_amount();
+            $data['page_num']=$page_num;
+            $data['page_amount']=ceil($num/$page_size);
+            $data['activities']=$this->activity_m->get($page_num,$page_size);
+            $data['head']='骑行活动 - wesports';
+            $data['title']=array("ACTIVITIES","参与到更多的活动中去吧");
+            $data['page']='act';
             $this->load->view('act_ride');
         }
         else{
-            $page_size=3;
+            
             $num=$this->activity_m->get_amount();
             $data['page_num']=$page_num;
             $data['page_amount']=ceil($num/$page_size);
@@ -34,6 +63,8 @@ class Activity extends CI_Controller{
             $data['head']='热门活动 - wesports';
             $data['title']=array("ACTIVITIES","参与到更多的活动中去吧");
             $data['page']='act';
+            $data['url']=base_url('activity/index/hot/');
+            // print_r($data);
             $this->load->view('act_hot',$data);
         }
     }
@@ -109,27 +140,26 @@ class Activity extends CI_Controller{
         $data['page']='act';
         $this->load->view('act_info',$data);
     }
-    public function delete(){
+    public function delete($aid){
         $u_id=$this->session->userdata('userId');
         if(!$u_id){
             redirect(base_url('user/login'));
         }
-        $aid=$this->input->post('aid');
+        $url=$this->input->post('url');
         $result=$this->activity_m->delete($aid);
         if ($result){
-            redirect(base_url('activity/index'));
+            redirect('activity/index/hot');
         }
         else{
             echo '<script>alert("删除失败");</script>';
         }
 
     }
-    public function edit(){
+    public function edit($aid){
         $u_id=$this->session->userdata('userId');
         if(!$u_id){
             redirect(base_url('user/login'));
         }
-        $aid=$this->input->post('aid');
         $this->form_validation->set_rules('title', '标题', 'required');
         $this->form_validation->set_rules('content', '内容', 'required');
         $this->form_validation->set_rules('start', '开始时间', 'required');
@@ -137,9 +167,9 @@ class Activity extends CI_Controller{
 //        $this->form_validation->set_rules('tel', '联系电话', 'required');
         if($_POST && $this->form_validation->run() === TRUE) {
             $data=$this->_form_data();
-            $data['act_id']=$this->input->post('actId');
+            $data['activityId']=$this->input->post('actId');
             $this->activity_m->update($data);
-            redirect("activity/info/{$data['act_id']}");
+            redirect("activity/info/{$data['activityId']}");
         }
         else{
             $data['url']=base_url('activity/edit');

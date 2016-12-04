@@ -9,10 +9,10 @@
 <nav id="nav">
     <ul class="indexul">
         <li<?php if($page==='index') echo ' class="current"'?>>
-            <a href="<?php echo base_url('home')?>">主页</a>
+            <a href="<?php echo base_url('summary/index')?>">主页</a>
         </li>
         <li<?php if($page==='health') echo ' class="current"'?>>
-            <a href="dist/healthManage-healthy.html" >健康管理</a>
+            <a href="<?php echo base_url('health/index')?>" >健康管理</a>
         </li>
         <li<?php if($page==='act') echo ' class="current"'?>>
             <a href="<?php echo base_url('activity/index')?>" >活动中心</a>
@@ -21,7 +21,7 @@
             <a href="#">动态</a>
             <ul>
                 <li>
-                    <a href="<?php echo base_url('friends/index')?>">好友动态</a>
+                    <a href="<?php echo base_url('friends/moment')?>">好友动态</a>
                 </li>
                 <li>
                     <a href="<?php echo base_url('friends/following')?>">我的关注</a>
@@ -32,25 +32,20 @@
             </ul>
         </li>
         <li <?php if($page==='user') echo 'class="current"'?>>
-            <a href="#">个人中心</a>
+            
+                <?php if (!$this->session->userdata('userId'))
+                    echo '<a href="'.base_url('user/login').'>登录</a>';
+                else{
+                    echo '<a href="#">个人中心</a>
             <ul>
-                <li>
-                    <a href="<?php echo base_url('user/login')?>">登录</a>
-                </li>
-                <li>
-                    <a href="<?php echo base_url('user/edit')?>">修改个人信息</a>
-                </li>
-                <!--<li>
-                    <a href="#">Phasellus consequat</a>
-                    <ul>
-                        <li>
-                            <a href="#">Lorem ipsum dolor</a>
-                        </li>
-                    </ul>
-                </li>-->
-                <li>
-                    <a href="<?php echo base_url('user/logout')?>">退出登录</a>
-                </li>
+            <li>
+                    <a href="'.base_url('user/edit').'">修改个人信息</a>
+                </li><li>
+                    <a href="'.base_url('user/logout').'">退出登录</a>
+                </li>';
+                }
+                ?>
+
             </ul>
         </li>
     </ul>

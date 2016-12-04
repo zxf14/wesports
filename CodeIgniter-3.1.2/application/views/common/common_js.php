@@ -17,3 +17,4 @@
 <script src="<?php echo base_url('asset/assets/js/util.js');?>"></script>
 <script src="<?php echo base_url('asset/assets/js/main.js');?>"></script>
 
+<script src="<?php echo base_url('asset/javascript/name.js');?>"></script>

@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
 	Highcharts.setOptions({
 		timezoneOffset: -8,
 		credits: {
@@ -27,61 +27,71 @@ $(function() {
 			weekdays: ["星期一", "星期二", "星期三", "星期三", "星期四", "星期五", "星期六", "星期天"],
 		},
 	});
-	$('#speed-linechart').highcharts({
+	
+// $('.container').text(url);
+	page=location.href.slice(-1);
+    $.getJSON('/health/json_data/'+page, function (data) {
+        Highcharts.chart('speed-linechart', {
+            title: {
+                text:''
+            },
+            
+            xAxis: {
+                categories:data[0]
+            },
+            tooltip: {
+                dateTimeLabelFormats: {
+                    millisecond: '%H:%M:%S.%L',
+                    second: '%H:%M:%S',
+                    minute: '%H:%M',
+                    hour: '%H:%M',
+                    day: '%Y-%m-%d',
+                    week: '%m-%d',
+                    month: '%Y-%m',
+                    year: '%Y'
+                },
+                valueSuffix: 'km/h'
+            },
+            yAxis: {
+                title: {
+                    text: '时速（km/h)'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            plotOptions: {
+                area: {
+                    fillColor: {
+                        linearGradient: {
+                            x1: 0,
+                            y1: 0,
+                            x2: 0,
+                            y2: 1
+                        },
+                        stops: [
+                            [0, Highcharts.getOptions().colors[0]],
+                            [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                        ]
+                    },
+                    marker: {
+                        radius: 2
+                    },
+                    lineWidth: 1,
+                    states: {
+                        hover: {
+                            lineWidth: 1
+                        }
+                    },
+                    threshold: null
+                }
+            },
 
-		title: {
-			text: ' ',
-			x: -20 //center
-		},
-		subtitle: {
-			text: ' ',
-			x: -20
-		},
-		xAxis: {
-			categories: [' ', ' ', ' ', ' ', ' ', ' ',
-				' ', ' ', ' ', ' ', ' ', ' '
-			]
-		},
-		yAxis: {
-			title: {
-				text: '时速 (km/h)'
-			},
-			plotLines: [{
-				value: 0,
-				width: 1,
-				color: '#808080'
-			}]
-		},
-		tooltip: {
-			valueSuffix: 'km/h'
-		},
-		legend: {
-			layout: 'vertical',
-			align: 'right',
-			verticalAlign: 'middle',
-			borderWidth: 0
-		},
-		plotOptions: {
-			area: {
-				fillColor: {
-					linearGradient: {
-						x1: 0,
-						y1: 0,
-						x2: 0,
-						y2: 1
-					},
-					stops: [
-						[0, Highcharts.getOptions().colors[0]],
-						[1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
-					]
-				},
-				lineWidth: 1,
-				threshold: null
-			}
-		},
-		series: [{
-			name: '时速',
-			data: [3.9, 4.2, 5.7, 8.5, 7.9, 5.2, 7.0, 6.6, 4.2, 5.3, 6.6, 4.8]
-		}]
-	});
+            series: [{
+                type: 'area',
+                name: '时速',
+                data: data[1]
+            }]
+        });
+    });
 });

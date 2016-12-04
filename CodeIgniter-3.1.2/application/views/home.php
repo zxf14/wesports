@@ -15,9 +15,10 @@ $title=array("Wesport","运动社交平台");
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="">
+    <meta name="description" content="运动社交平台">
+    <meta name="keywords" content="运动,健康,社交,交友">
     <?php
-    require (__DIR__).'/common/commo_css.php';
+    require 'common/common_css.php';
     ?>
 
 </head>
@@ -27,13 +28,13 @@ $title=array("Wesport","运动社交平台");
 
     <!-- Header -->
     <?php
-    require (__DIR__).'/common/header.inc.php';
+    require 'common/header.inc.php';
     ?>
 
 
     <!-- Nav -->
     <?php
-    require (__DIR__).'/common/navigator.php';
+    require 'common/navigator.php';
     ?>
 
     <!-- Banner -->
@@ -48,74 +49,63 @@ $title=array("Wesport","运动社交平台");
     <!-- Main -->
     <div id="main-wrapper">
         <div id="main" class="container">
-            <div class="row 200%">
-                <div class="12u">
-
-                    <!-- daySteps -->
-                    <?php
-                    require 'indexComponents/daysteps.php';
-                    ?>
-                </div>
+            <div class="12u">
+                <!-- daySteps -->
+                <?php
+                require 'indexComponents/daysteps.php';
+                ?>
             </div>
-            <div class="row 200%">
-                <div class="12u">
-
-                    <!-- awards -->
-                    <?php
-                    require 'indexComponents/awards.php';
-                    ?>
-                </div>
+            <div class="12u">
+                <!-- daySteps -->
+                <?php
+                require 'indexComponents/daychart.php';
+                ?>
             </div>
-            <div class="row 200%">
-                <div class="12u">
-
-                    <!-- runRecords -->
-                    <?php
-                    require 'indexComponents/runRecords.php';
-                    ?>
-
-                </div>
+            <div class="12u">
+                <!-- awards -->
+                <?php
+                require 'indexComponents/awards.php';
+                ?>
             </div>
-            <div class="row 200%">
-                <div class="12u">
-
-                    <!-- sportsAmount -->
-                    <?php
-                    require 'indexComponents/sportsAmount.php';
-                    ?>
-                </div>
+            <div class="12u">
+                <!-- runRecords -->
+                <?php
+                require 'indexComponents/runRecords.php';
+                ?>
             </div>
-            <div class="row 200%">
-                <div class="12u">
+            <div class="12u">
+                <!-- sportsAmount -->
+                <?php
+                require 'indexComponents/sportsAmount.php';
+                ?>
+            </div>
 
-                    <!-- rank -->
-                    <?php
-                    require 'indexComponents/rank.php';
-                    ?>
-                </div>
+            <div class="12u">
+
+                <!-- rank -->
+                <?php
+                require 'indexComponents/rank.php';
+                ?>
             </div>
         </div>
     </div>
 
     <!-- Footer -->
     <?php
-    require (__DIR__).'/common/homeFooter.php';
+    require 'common/homeFooter.php';
     ?>
 </div>
 
 <!-- Scripts -->
 
 <?php
-require (__DIR__).'/common/common_js.php';
+require 'common/common_js.php';
 ?>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/3.2.3/echarts.common.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="dist/javascripts/creatChart.js" type="text/javascript" charset="utf-8"></script>
-<script >
-    $(document).ready(function () {
-        $('#nav li:eq(0)').attr('class','current');
-        $('#nav li:eq(0) a').attr('href','#');
-    })
-</script>
+<script src="<?php echo base_url('asset/javascript/highcharts.js')?>" type="text/javascript" charset="utf-8"></script>
+<script src="http://cdn.hcharts.cn/highcharts/modules/exporting.js"></script>
+<script src="http://cdn.hcharts.cn/highcharts/modules/heatmap.js"></script>
+<script src="<?php echo base_url('asset/javascript/stepBlockChart.js')?>" type="text/javascript" charset="utf-8"></script>
+<script src="<?php echo base_url('asset/javascript/runBarChart.js')?>" type="text/javascript" charset="utf-8"></script>
 </body>
 
 </html>

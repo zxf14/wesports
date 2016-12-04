@@ -31,9 +31,9 @@
                     <!-- Profile Image -->
                     <div class="box box-primary">
                         <div class="box-body box-profile">
-                            <img class="profile-user-img img-responsive img-circle" src="images/user4-128x128.jpg" alt="User profile picture">
+                            <img class="profile-user-img img-responsive img-circle" src="<?php echo base_url('asset/images/user/user1.jpg');?>" alt="User profile picture">
 
-                            <h3 class="profile-username text-center">凤姐</h3>
+                            <h3 class="profile-username text-center">王而小</h3>
                             <p class="text-muted text-center">初阶跑者
                                 <i class="fa fa-star"></i><i class="fa fa-star"></i></p>
 
@@ -44,19 +44,19 @@
                             <ul class="list-group list-group-unbordered">
                                 <li class="list-group-item">
                                     <b>关注</b>
-                                    <a class="pull-right">1,322</a>
+                                    <a class="pull-right">3</a>
                                 </li>
                                 <li class="list-group-item">
                                     <b>粉丝</b>
-                                    <a class="pull-right">543</a>
+                                    <a class="pull-right">4</a>
                                 </li>
                                 <li class="list-group-item">
                                     <b>动态数量</b>
-                                    <a class="pull-right">13,287</a>
+                                    <a class="pull-right">1</a>
                                 </li>
                             </ul>
 
-                            <a href="#" class="btn btn-primary btn-block"><b style="color: white;">关注ta</b></a>
+                            <!-- <a href="#" class="btn btn-primary btn-block"><b style="color: white;">关注ta</b></a> -->
                         </div>
                         <!-- /.box-body -->
                     </div>
@@ -107,7 +107,7 @@
 
                             <strong><i class="fa fa-file-text-o margin-r-5"></i> 简介</strong>
 
-                            <p class="text-left">先定一个小目标：跑一次全马 ～</p>
+                            <p class="text-left">先定一个小目标：跑一次全马～</p>
                         </div>
                         <!-- /.box-body -->
                     </div>
@@ -121,7 +121,7 @@
                         <div class="page-content">
                             <div class="profile_pinfo" id="pl_content_account">
 
-                                <div class="infoblock">
+                                <div class="infoblock followInfo">
                                     <h2 class="major text-left"><span><?php echo $info?></span>
                                     </h2>
                                 </div>

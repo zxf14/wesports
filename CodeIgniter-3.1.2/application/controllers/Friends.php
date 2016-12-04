@@ -17,8 +17,11 @@ class Friends extends CI_Controller{
         if(!$u_id){
             redirect(base_url('user/login'));
         }
-        $data['moments']=$this->friends_m->get_posts($u_id);
-        $this->load->view('moment');
+        $data['head']='我的动态 - wesports';
+        $data['title']=array("Moments","记录我们的生活瞬间");
+        $data['page']='moment';
+        // $data['moments']=$this->friends_m->get_posts($u_id);
+        $this->load->view('moment',$data);
     }
     public function following(){
         $u_id=$this->session->userdata('userId');
@@ -31,7 +34,7 @@ class Friends extends CI_Controller{
         $data['title']=array("Friends","关注更多的好友吧");
         $data['page']='moment';
         $data['info']='我关注的人';
-        
+
         $this->load->view('following',$data);
     }
     public function followers(){
@@ -40,7 +43,6 @@ class Friends extends CI_Controller{
             redirect(base_url('user/login'));
         }
         $data['following']=$this->friends_m->get_followers($u_id);
-        print_r($data['following']);
         $data['head']='我的关注 - wesports';
         $data['title']=array("Friends","关注更多的好友吧");
         $data['page']='moment';

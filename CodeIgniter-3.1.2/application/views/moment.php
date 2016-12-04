@@ -6,6 +6,8 @@
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="">
+    <meta name="description" content="运动社交平台">
+    <meta name="keywords" content="运动,健康,社交,交友">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <?php
     $this->load->view('common/common_css');
@@ -32,9 +34,9 @@
                     <!-- Profile Image -->
                     <div class="box box-primary">
                         <div class="box-body box-profile">
-                            <img class="profile-user-img img-responsive img-circle" src="images/user4-128x128.jpg" alt="User profile picture">
+                            <img class="profile-user-img img-responsive img-circle" src="<?php echo base_url('asset/images/user/user1.jpg');?>" alt="User profile picture">
 
-                            <h3 class="profile-username text-center">凤姐</h3>
+                            <h3 class="profile-username text-center">王而小</h3>
                             <p class="text-muted text-center">初阶跑者
                                 <i class="fa fa-star"></i><i class="fa fa-star"></i></p>
 
@@ -45,19 +47,19 @@
                             <ul class="list-group list-group-unbordered">
                                 <li class="list-group-item">
                                     <b>关注</b>
-                                    <a class="pull-right">1,322</a>
+                                    <a class="pull-right">3</a>
                                 </li>
                                 <li class="list-group-item">
                                     <b>粉丝</b>
-                                    <a class="pull-right">543</a>
+                                    <a class="pull-right">4</a>
                                 </li>
                                 <li class="list-group-item">
                                     <b>动态数量</b>
-                                    <a class="pull-right">13,287</a>
+                                    <a class="pull-right">1</a>
                                 </li>
                             </ul>
 
-                            <a href="#" class="btn btn-primary btn-block"><b style="color: white;">关注ta</b></a>
+                            <!-- <a href="#" class="btn btn-primary btn-block"><b style="color: white;">关注ta</b></a> -->
                         </div>
                         <!-- /.box-body -->
                     </div>
@@ -139,23 +141,23 @@
                                             <!-- Post -->
                                             <div class="post">
                                                 <div class="user-block">
-                                                    <img class="img-circle img-bordered-sm" src="images/user1-128x128.jpg" alt="user image">
+                                                    <img class="img-circle img-bordered-sm" src="<?php echo base_url('asset/images/user/user2.jpg');?>" alt="user image">
                                                     <span class="username">
-																  <a href="#">Jonathan Burke Jr.</a>
+																  <a href="#">张三.</a>
 																  <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
 																</span>
                                                     <span class="description">17:30 今天</span>
                                                 </div>
                                                 <!-- /.user-block -->
                                                 <p>
-                                                    Lorem ipsum represents a long-held tradition for designers, typographers and the like. Some people hate it and argue for its demise, but others ignore the hate as they create awesome tools to help create filler text for everyone from bacon lovers to Charlie Sheen fans.
+                                                    昨天参加了一次南京市的版马活动，很久没有跑步了，又在马拉松的过程感觉到了运动的乐趣，就是早晨起来有些抬不起腿了
                                                 </p>
                                                 <ul class="list-inline">
                                                     <li>
                                                         <a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> 转发</a>
                                                     </li>
                                                     <li>
-                                                        <a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> 赞 (2)</a>
+                                                        <a href="#" id="voteUp" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> 赞 </a>
                                                     </li>
                                                     <li class="pull-right">
                                                         <a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> 评论 (5)
@@ -163,41 +165,41 @@
                                                     </li>
                                                 </ul>
 
-                                                <input class="form-control input-sm" type="text" placeholder="Type a comment">
+                                                <input class="form-control input-sm" type="text" placeholder="编辑评论">
                                             </div>
                                             <!-- /.post -->
 
                                             <!-- Post -->
                                             <div class="post">
                                                 <div class="user-block">
-                                                    <img class="img-circle img-bordered-sm" src="images/user6-128x128.jpg" alt="User Image">
+                                                    <img class="img-circle img-bordered-sm" src="<?php echo base_url('asset/images/user/user5.jpg');?>" alt="User Image">
                                                     <span class="username">
-										                          <a href="#">Adam Jones</a>
+										                          <a href="#">李斯</a>
 										                          <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
 										                        </span>
                                                     <span class="description">5 天前</span>
                                                 </div>
                                                 <!-- /.user-block -->
                                                 <p>
-                                                    Lorem ipsum represents a long-held tradition for designers, typographers and the like. Some people hate it and argue for its demise, but others ignore the hate as they create awesome tools to help create filler text for everyone from bacon lovers to Charlie Sheen fans.
+                                                    很久没有人发动态了，最近出去旅游了，大家看看我拍的照片怎么样
                                                 </p>
                                                 <div class="row margin-bottom">
                                                     <div class="col-sm-6">
-                                                        <img class="img-responsive" src="images/photo1.png" alt="Photo">
+                                                        <img class="img-responsive" src="<?php echo base_url('asset/images/photo1.png');?>" alt="Photo">
                                                     </div>
                                                     <!-- /.col -->
                                                     <div class="col-sm-6">
                                                         <div class="row">
                                                             <div class="col-sm-6">
-                                                                <img class="img-responsive" src="images/photo2.png" alt="Photo">
+                                                                <img class="img-responsive" src="<?php echo base_url('asset/images/photo2.png');?>" alt="Photo">
                                                                 <br>
-                                                                <img class="img-responsive" src="images/photo3.jpg" alt="Photo">
+                                                                <img class="img-responsive" src="<?php echo base_url('asset/images/photo3.jpg');?>" alt="Photo">
                                                             </div>
                                                             <!-- /.col -->
                                                             <div class="col-sm-6">
-                                                                <img class="img-responsive" src="images/photo4.jpg" alt="Photo">
+                                                                <img class="img-responsive" src="<?php echo base_url('asset/images/photo4.jpg');?>" alt="Photo">
                                                                 <br>
-                                                                <img class="img-responsive" src="images/photo1.png" alt="Photo">
+                                                                <img class="img-responsive" src="<?php echo base_url('asset/images/photo1.png');?>" alt="Photo">
                                                             </div>
                                                             <!-- /.col -->
                                                         </div>
@@ -212,20 +214,18 @@
                                                         <a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> 转发</a>
                                                     </li>
                                                     <li>
-                                                        <a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> 赞</a>
+                                                        <a href="#" id="voteUp2" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> 赞</a>
                                                     </li>
                                                     <li class="pull-right">
-                                                        <a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> 评论 (5)
+                                                        <a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> 评论 (1)
                                                         </a>
                                                     </li>
                                                 </ul>
 
-                                                <input class="form-control input-sm" type="text" placeholder="Type a comment">
+                                                <input class="form-control input-sm" type="text" placeholder="编辑评论">
                                             </div>
                                             <!-- /.post -->
-                                            <p>
-                                                <a href="#"> 您已经看完了所有好友动态，如有需要，可再看一遍</a>
-                                            </p>
+                                            
                                         </div>
                                         <!-- /.tab-pane -->
 
@@ -432,7 +432,16 @@
     <?php
     require 'common/common_js.php'
     ?>
-
+<script>
+    $('#voteUp').click(function(){
+        alert('成功');
+        $('#voteUp').css("color","red");
+    });
+    $('#voteUp2').click(function(){
+        alert('成功');
+        $('#voteUp2').css("color","red");
+    });
+</script>
 </body>
 
 </html>

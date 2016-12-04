@@ -16,10 +16,13 @@
 
 <!-- Font Awesome -->
 <link rel="stylesheet" href="<?php echo base_url('asset/assets/css/font-awesome.min.css');?>">
-<link rel="stylesheet" href="<?php echo base_url('asset/assets/css/ionicons.min.css');?>">
+// <link rel="stylesheet" href="<?php echo base_url('asset/assets/css/ionicons.min.css');?>">
+<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
 
 <link rel="stylesheet" href="<?php echo base_url('asset/assets/css/main.css');?>" />
 <link rel="stylesheet" href="<?php echo base_url('asset/stylesheet/home.css');?>" >
 <!-- 引入 Bootstrap -->
 <link rel="stylesheet" href="<?php echo base_url('asset/stylesheet/styles.css');?>">
+<link rel="stylesheet" href="<?php echo base_url('asset/stylesheet/buttons.css');?>">
 

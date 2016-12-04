@@ -148,8 +148,8 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="inputUserImg" class="col-sm-2 control-label">头像</label>
-                                        <img id='inputUserImg' title="点击更换头像" style="margin-left: 20px;cursor: pointer;width: 100px" src="<?php echo base_url('asset/images/user/user1-128x128.jpg');?>" class="img-circle img-thumbnail"/>
-                                    <input type="hidden" id="inputImg" name="inputUserImg" value=""/>
+                                        <img id='inputUserImg' title="点击更换头像" style="margin-left: 20px;cursor: pointer;width: 100px" src="<?php echo base_url('asset/images/user/user1.jpg');?>" class="img-circle img-thumbnail"/>
+                                    <input type="hidden" id="inputImg" name="inputUserImg" value="<?php echo base_url('asset/images/user/user1.jpg');?>"/>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputExperience" class="col-sm-2 control-label">个人简介</label>
@@ -192,17 +192,21 @@
     ?>
     <script>
         var avatar = document.getElementById("inputUserImg");
+        var imgNum=(function(){
+            var i=1;
+            return (function(){
+                i=i%9+1;
+                return i;
+            });
+        }());
         avatar.addEventListener("click", changeAvatar);
         function changeAvatar() {
-            var num=Math.round(Math.random()*7+1);
-            var srcString="http://localhost:8080/asset/images/user/user"+num+"-128x128.jpg";
-            while (srcString===document.getElementById("inputUserImg").src){
-                num=Math.round(Math.random()*7+1);
-            }
-            var srcString="http://localhost:8080/asset/images/user/user"+num+"-128x128.jpg";
+            var num=imgNum();
+            var srcString="http://localhost:8080/asset/images/user/user"+num+".jpg";
             document.getElementById("inputUserImg").src = srcString;
             document.getElementById("inputImg").value=srcString;
         }
+        
         $(document).ready(function(){
             $("#inputEmail").blur(function(){
                 $.ajax({
@@ -216,11 +220,13 @@
             });
         });
         function check(obj) {
+            var patten=/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+            if(!patten.test(obj.getElementById('inputEmail').value))
+                return false;
             if(document.getElementById("inputPassword").value!==document.getElementById("confirmPassword").value){
                 alert("密码与确认密码不同");
                 return false;
-            }
-
+            } 
             return true;
         }
     </script>

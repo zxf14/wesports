@@ -10,7 +10,15 @@ class User_m extends CI_Model{
     {
         $this->load->database();
     }
-    public function get_user($email=FALSE){
+    public function get_user($user_id=FALSE){
+        if($user_id===FALSE){
+            $query=$this->db->get('user');
+            return $query->result_array();
+        }
+        $query=$this->db->get_where('user',array('userId'=>$user_id));
+        return $query->row_array();
+    }
+    public function get_user_email($email=FALSE){
         if($email===FALSE){
             $query=$this->db->get('user');
             return $query->result_array();
@@ -22,21 +30,18 @@ class User_m extends CI_Model{
     {
         return $this->db->insert('user',$data);
     }
+    public function mod_user($data)
+    {
+        $this->db->where('userId', 4);
+        return $this->db->update('user', $data);
+    }
     public function login($data){
-        $user=$this->get_user($data['email']);
+        $user=$this->get_user_email($data['email']);
 
         if ($user && password_verify($data['password'],$user['password'])){
             $userdata = array(
-                'userName'  => $user['userName'],
                 'email'     => $user['email'],
-                'userId'     => $user['userId'],
-                'age'     => $user['age'],
-                'gender'     => $user['gender'],
-                'location'     => $user['location'],
-                'level'     => $user['level'],
-                'photoUri'     => $user['photoUri'],
-                'phone'     => $user['phone'],
-                'logged_in' => TRUE
+                'userId'     => $user['userId']
             );
             $this->session->set_userdata($userdata);
             return true;

@@ -51,8 +51,9 @@ h2 a {
 /* line 42, ../sass/login.scss */
 .bg-panel {
   width: 30%;
-  height: 50%;
+  height: 400px;
   background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 5px;
   box-sizing: border-box;
   overflow: hidden;
   padding: 0 20px 20px 20px;
@@ -105,4 +106,21 @@ h2 a {
 /* line 89, ../sass/login.scss */
 .form-group {
   margin-bottom: 40px;
+}
+.loginB{
+  width: 66.66666667%;
+  text-align:center;
+}
+.loginB span{
+  padding-top: 10px;
+}
+.btn-basic{
+  color: #fff;
+  background-color: #81c782;
+  border-color:#81c782;
+}
+.btn-basic:hover{
+  color: #fff;
+  background-color: rgba(76, 175, 80, 0.76);
+  border-color:#81c782;
 }

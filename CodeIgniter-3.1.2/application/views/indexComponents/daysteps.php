@@ -11,56 +11,30 @@
 
     <div class="center-block round">
         <p class="smallFont">今日步数</p>
-        <p class="todaySteps">1579</p>
+        <p class="todaySteps"><?php echo $steps[0]['steps']?></p>
         <p class="smallFont">目标 10000</p>
     </div>
 
     <div class="center-block">
+    <?php
+    foreach($steps as $s){?>
         <div class="progress vertical progress-striped">
-            <div class="progress-bar progress-bar-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="height: 30%;">
-                <span class="sr-only">125步</span>
+            <div class="progress-bar progress-bar-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="height: <?php echo ceil($s['steps']/100);?>%;">
+                <span class="sr-only"><?php echo $s['steps']?>步</span>
             </div>
         </div>
-        <div class="progress vertical progress-striped">
-            <div class="progress-bar progress-bar-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="height: 80%;">
-                <span class="sr-only">1200步</span>
-            </div>
-        </div>
-        <div class="progress vertical progress-striped">
-            <div class="progress-bar progress-bar-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="height: 60%;">
-                <span class="sr-only">1000步</span>
-            </div>
-        </div>
-        <div class="progress vertical progress-striped">
-            <div class="progress-bar progress-bar-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="height: 30%;">
-                <span class="sr-only">125步</span>
-            </div>
-        </div>
-        <div class="progress vertical progress-striped">
-            <div class="progress-bar progress-bar-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="height: 80%;">
-                <span class="sr-only">1200步</span>
-            </div>
-        </div>
-        <div class="progress vertical progress-striped">
-            <div class="progress-bar progress-bar-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="height: 60%;">
-                <span class="sr-only">1000步</span>
-            </div>
-        </div>
-        <div class="progress vertical progress-striped">
-            <div class="progress-bar progress-bar-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="height: 60%;">
-                <span class="sr-only">1000步</span>
-            </div>
-        </div>
+        <?php  }?>
     </div>
     <div class="center-block">
         <p class="data">
-            <span>12日</span>
-            <span>13日</span>
-            <span>14日</span>
-            <span>15日</span>
-            <span>16日</span>
-            <span>17日</span>
-            <span>今日</span>
+            <?php 
+            foreach ($steps as $s) {
+                if(date("d",$s['createdAt'])==date("d",now()))
+                    echo '<span>今天 </span>';
+                else
+                    echo '<span>'.date("d",$s['createdAt']).'日</span>';
+            }
+            ?>
         </p>
     </div>
     <header>

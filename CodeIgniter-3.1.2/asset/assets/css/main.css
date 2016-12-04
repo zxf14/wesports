@@ -1247,7 +1247,7 @@
 		font-weight: 700;
 		text-transform: uppercase;
 		text-decoration: none;
-		background: #b1ddab;
+		background: #1abc9c;
 		color: #fff;
 		border: 0;
 		line-height: 1em;
@@ -1644,7 +1644,7 @@
 
 	#main-wrapper {
 		background: #fff;
-		border-top: solid 5px #b1ddab;
+		border-top: solid 5px #1abc9c;
 		border-bottom: solid 5px #c1cac5;
 	}
 
@@ -1746,7 +1746,7 @@
 				h2.major {
 					font-size: 1.65em;
 					text-align: center;
-					margin: 0 0 3em 0;
+					margin: 2em 0 2em 0;
 				}
 				.infoblock h2.major {
 					margin: 0;
@@ -1905,10 +1905,8 @@
 				font-family: 'Open Sans Condensed', sans-serif;
 				font-weight: 700;
 				text-transform: uppercase;
-				padding: 5em 0 2em 0;
+				padding: 3em 0 1.5em 0;
 				background: #fff;
-				  /*background: #b1ddab;*/
-
 				margin: 0 auto;
 			}
 
@@ -2006,7 +2004,7 @@
 					}
 
 					#nav li.current a {
-						background: #b1ddab;
+						background: #1abc9c;
 						color: #fff;
 					}
 
@@ -2093,7 +2091,7 @@
 
 			#footer {
 				text-align: center;
-				padding: 8em 0 8em 0;
+				padding: 4em 0 2em 0;
 			}
 
 				#footer h2.major {
@@ -2103,7 +2101,7 @@
 		/* Copyright */
 
 			#copyright {
-				margin: 4em 0 0 0;
+				margin: 2em 0 0 0;
 			}
 
 	}
@@ -2551,7 +2549,7 @@
 						position: absolute;
 						left: 0;
 						top: 0;
-						background: #b1ddab;
+						background: #1abc9c;
 						width: 44px;
 						height: 44px;
 						content: '\f0c9';
